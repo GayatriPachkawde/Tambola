@@ -1,0 +1,260 @@
+.ball {
+  border-radius: 50%;
+  background-image: -webkit-linear-gradient(
+    -45deg,
+    rgba(255, 255, 220, 0.3) 0%,
+    transparent 100%
+  );
+  background-image: -moz-linear-gradient(
+    -45deg,
+    rgba(255, 255, 220, 0.3) 0%,
+    transparent 100%
+  );
+  background-image: -o-linear-gradient(
+    -45deg,
+    rgba(255, 255, 220, 0.3) 0%,
+    transparent 100%
+  );
+  background-image: -ms-linear-gradient(
+    -45deg,
+    rgba(255, 255, 220, 0.3) 0%,
+    transparent 100%
+  );
+
+  position: absolute;
+}
+
+.ball1 {
+  height: 130px;
+  width: 130px;
+  background-color: #3b4ba3;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 20px;
+  left: 400px;
+}
+
+.ball2 {
+  height: 70px;
+  width: 70px;
+  background-color: #be8abf;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 120px;
+  left: 250px;
+}
+.ball3 {
+  height: 130px;
+  width: 130px;
+  background-color: #edf285;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 0px;
+  left: 180px;
+}
+.ball4 {
+  height: 100px;
+  width: 100px;
+  background-color: #01c5c4;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 0px;
+  left: 300px;
+}
+.ball5 {
+  height: 80px;
+  width: 80px;
+  background-color: #fa26a0;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 80px;
+  left: 330px;
+}
+.ball6 {
+  height: 80px;
+  width: 80px;
+  background-color: #54e346;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 90px;
+  right: 360px;
+}
+
+.ball7 {
+  height: 100px;
+  width: 100px;
+  background-color: #01c5c4;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 0px;
+  right: 250px;
+}
+.ball8 {
+  height: 50px;
+  width: 50px;
+  background-color: #e05297;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 120px;
+  right: 320px;
+}
+.ball9 {
+  height: 100px;
+  width: 100px;
+  background-color: orangered;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 0px;
+  right: 330px;
+}
+.ball0 {
+  height: 120px;
+  width: 120px;
+  background-color: #892cdc;
+  box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
+  bottom: 0px;
+  right: 430px;
+}
+
+.number {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 80%;
+  text-align: center;
+  background-color: #fbf4f9;
+  font-family: "Playfair Display", serif;
+}
+
+.number12,
+.number27 {
+  top: 10px;
+  right: 15px;
+  font-size: 40px;
+}
+.number45,
+.number1 {
+  font-size: 25px;
+  top: 4px;
+  right: 15px;
+}
+.number32,
+.number47 {
+  bottom: 10px;
+  right: 15px;
+  font-size: 35px;
+}
+.number8,
+.number31 {
+  bottom: 10px;
+  right: 10px;
+  font-size: 30px;
+}
+.number34 {
+  top: 10%;
+  left: 10%;
+  font-size: 20px;
+}
+.number47 {
+  font-size: 15px;
+}
+.number54 {
+  top: 10%;
+  left: 10%;
+  font-size: 20px;
+}
+
+.hp-mainDiv {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: radial-gradient(#98acf8, #0e49b5, #21209c);
+  /* display: flex;
+  justify-content: center; */
+  /* background-color: #ffabe1; */
+}
+
+.title {
+  position: absolute;
+  left: 38%;
+  margin: auto;
+  font-family: "Nerko One", cursive;
+  color: white;
+  font-size: 50px;
+  letter-spacing: 3px;
+  text-shadow: 5px 5px black;
+}
+.roomBtn {
+  position: relative;
+  top: 250px;
+  left: 32%;
+}
+button {
+  background-image: radial-gradient(#c24914, #682c0e);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+
+  margin-left: 15px;
+  width: 150px;
+  height: 40px;
+  border: none;
+
+  font-family: "Sriracha", cursive;
+}
+
+.roomBtn button {
+  width: 200px;
+  font-size: 20px;
+}
+
+.roomBtn button:hover {
+  background-color: white;
+}
+
+.roomBtn button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  margin-top: 0px;
+}
+
+.info-icon {
+  border: none;
+  background-color: white;
+  color: brown;
+  border-radius: 50%;
+  float: left;
+}
+
+.signout-icon {
+  color: white;
+  background-color: brown;
+  border-radius: 50%;
+  float: left;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.user-icon {
+  color: white;
+  background-color: brown;
+  border-radius: 50%;
+  text-align: center;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid white;
+  cursor: pointer;
+}
