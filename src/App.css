@@ -2,3 +2,26 @@ button {
   text-align: center;
   line-height: 20px;
 }
+
+.brown-bg {
+  background-image: radial-gradient(#c24914, #682c0e);
+}
+
+.blue-bg {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#98acf8, #0e49b5, #21209c);
+}
+
+button {
+  outline: none;
+}
+
+input {
+  outline: none;
+}

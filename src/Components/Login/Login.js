@@ -6,7 +6,9 @@ import Form from "./Form";
 const Login = (props) => {
   const [userName, setuserName] = useState("");
   const [password, setpassword] = useState("");
+
   const [signup, setsignup] = useState(false);
+  console.log(props.err);
 
   const userNamechangeHandler = (e) => {
     setuserName(e.target.value);
@@ -37,7 +39,10 @@ const Login = (props) => {
             <div
               className="login-signup"
               id="btn"
-              onClick={() => props.signinHandler(userName, password)}
+              onClick={() => {
+                setsignup(false);
+                props.signupHandler(userName, password);
+              }}
             >
               Sign Up<div id="circle"></div>
             </div>

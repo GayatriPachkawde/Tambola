@@ -1,138 +1,149 @@
 import "./App.css";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
 import Home from "./Components/HomePage/Home";
-import CreateRoom from "./Components/Room/CreateRoom";
-import JoinRoom from "./Components/Room/JoinRoom";
+import CreateRoom from "./Components/Room/Createroom/CreateRoom";
+import JoinRoom from "./Components/Room/Joinroom/JoinRoom";
 import Instruction from "./Components/Instruction/Instruction";
 import Login from "./Components/Login/Login";
-import GameRoom from "./Components/Room/GameRoom";
+import GameRoom from "./Components/Room/Gameroom/GameRoom";
+const io = require("socket.io-client");
 
 function App() {
   const [loggedIn, setloggedIn] = useState(false);
   const [error, seterror] = useState(undefined);
-  const [userName, setuserName] = useState(undefined);
-  const [points, setPoints] = useState(undefined);
+  const [socket, setsocket] = useState(null);
+  const [isadmin, setisAdmin] = useState(false);
 
-  const getUserName = () => {
-    return fetch("http://localhost:9999/userInfo", { credentials: "include" })
-      .then((r) => {
-        if (r.ok) {
-          return r.json();
-        } else {
-          setloggedIn(false);
-          setuserName(undefined);
-          return { success: false };
-        }
-      })
-      .then((r) => {
-        if (r.success !== false) {
-          setloggedIn(true);
-          setuserName(r.userName);
-          setPoints(r.points);
-        }
-      });
+  const setAdmin = () => {
+    setisAdmin(true);
   };
+
+  const setAdminfalse = () => {
+    setisAdmin(false);
+  };
+
+  const setupSocket = () => {
+    const token = localStorage.getItem("CC_TOKEN");
+
+    if (token && !socket) {
+      const connectionOptions = {
+        "force new connection": true,
+        reconnectionAttempts: "Infinity",
+        timeout: 10000,
+        transports: ["websocket"],
+        query: {
+          token: localStorage.getItem("CC_TOKEN"),
+        },
+      };
+
+      const newSocket = io("http://localhost:8000", connectionOptions);
+
+      newSocket.on("disconnect", () => {
+        setsocket(null);
+        setTimeout(setupSocket, 3000);
+      });
+
+      newSocket.on("connection", () => {
+        console.log("Socket connected");
+      });
+
+      setsocket(newSocket);
+    }
+  };
+
   useEffect(() => {
-    getUserName();
+    setupSocket();
+    //eslint-disable-next-line
   }, []);
 
-  const logoutHandler = () => {
-    return fetch("/http://localhost:9999/logout", {
-      credentials: "include",
-    }).then((r) => {
-      if (r.ok) {
-        setloggedIn(false);
-        setuserName(undefined);
-        seterror(undefined);
-      }
-    });
-  };
-
-  const loginHandler = (userName, password) => {
-    fetch("http://localhost:9999/login", {
+  const loginHandler = (name, password) => {
+    fetch("http://localhost:8000/user/login", {
       method: "POST",
-      body: JSON.stringify({ userName, password }),
+      body: JSON.stringify({ name, password }),
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
     })
+      .then((r) => r.json())
       .then((r) => {
-        if (r.ok) {
-          return { success: true };
+        if (r.message === "Username/Password did not match") {
+          seterror(r.message);
         } else {
-          return r.json();
-        }
-      })
-      .then((r) => {
-        if (r.success) {
-          return getUserName();
-        } else {
-          seterror(r.err);
+          localStorage.setItem("username", name);
+          localStorage.setItem("CC_TOKEN", r.token);
+          setloggedIn(true);
+          setupSocket();
         }
       });
   };
 
-  const signinHandler = (userName, password) => {
-    fetch("http://localhost:9999/signup", {
+  const signupHandler = (name, password) => {
+    fetch("http://localhost:8000/user/register", {
       method: "POST",
-      body: JSON.stringify({ userName, password }),
+      body: JSON.stringify({ name, password }),
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
     })
+      .then((r) => r.json())
       .then((r) => {
-        if (r.ok) {
-          return { success: true };
+        if (r.message === "User registered successfully") {
+          // localStorage.setItem("username", name);
+          // localStorage.setItem("CC_TOKEN", r.token);
+          // setloggedIn(true);
+          return;
         } else {
-          return r.json();
-        }
-      })
-      .then((r) => {
-        if (r.success) {
-          return getUserName();
-        } else {
-          seterror(r.err);
+          seterror(r.message);
         }
       });
   };
 
-  const showUser = () => {
-    console.log(`Username: ${userName} Points: ${points}`);
+  const logout = () => {
+    localStorage.removeItem("CC_TOKEN");
+    setloggedIn(false);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("CC_TOKEN");
+
+    if (token) {
+      setloggedIn(true);
+    }
+  }, []);
   return (
     <div className="main">
-      {/* {loggedIn ? ( */}
-      <Router>
-        <Route exact path="/">
-          <Home handler={logoutHandler} showUser={showUser} />
-        </Route>
+      {loggedIn ? (
+        <Router>
+          <Route exact path="/">
+            <Home handler={logout} />
+          </Route>
 
-        <Route exact path="/create-room">
-          <CreateRoom />
-        </Route>
+          <Route exact path="/create-room">
+            <CreateRoom socket={socket} handler={setAdmin} />
+          </Route>
 
-        <Route exact path="/join-room">
-          <JoinRoom />
-        </Route>
+          <Route exact path="/join-room">
+            <JoinRoom socket={socket} handler={setAdminfalse} />
+          </Route>
 
-        <Route exact path="/instruction">
-          <Instruction />
-        </Route>
+          <Route exact path="/instruction">
+            <Instruction socket={socket} />
+          </Route>
 
-        <Route exact path="/game-room">
-          <GameRoom />
-        </Route>
-      </Router>
-      {/* ) : (
+          <Route
+            path="/game-room/:id"
+            render={() => <GameRoom socket={socket} isadmin={isadmin} />}
+            exact
+          />
+        </Router>
+      ) : (
         <Login
           loginHandler={loginHandler}
-          signinHandler={signinHandler}
+          signupHandler={signupHandler}
           err={error}
         />
-      )} */}
+      )}
     </div>
   );
 }

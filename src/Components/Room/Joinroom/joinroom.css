@@ -1,0 +1,125 @@
+.code-container {
+  display: flex;
+  justify-content: center;
+}
+
+.code-container input {
+  height: 35px;
+  width: 35px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 0px;
+  color: white;
+  cursor: text;
+}
+
+.code-container input:focus {
+  outline: none;
+}
+
+.container {
+  width: 30%;
+  height: 500px;
+  margin: auto;
+  margin-top: 40px;
+  background-color: #eff8ff;
+}
+
+.jr-title {
+  font-family: "Nerko One", cursive;
+  color: white;
+  font-size: 85px;
+  text-shadow: 3px 3px black;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.rc-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5%;
+}
+
+.rc-container button {
+  margin-top: 40px;
+}
+
+.rc-title {
+  text-align: center;
+  font-family: "Redressed", cursive;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.gamerooms {
+  height: 300px;
+  width: 300px;
+  overflow: auto;
+  margin: auto;
+  margin-top: 20px;
+  padding: 7px;
+  background-color: #21209c;
+  opacity: 70%;
+  position: relative;
+  z-index: 1;
+}
+
+.gamerooms::-webkit-scrollbar {
+  width: 12px;
+  background-color: #21209c;
+}
+
+.gamerooms::-webkit-scrollbar-track {
+  background: #21209c;
+}
+
+.gamerooms::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-image: radial-gradient(white, #98acf8);
+  border: 1px solid #21209c;
+  z-index: 1;
+}
+
+.gameroom {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+
+.gameroom #btn {
+  padding: 0px;
+  margin: 0px;
+  /* margin-left: 25%; */
+  /* background-image: radial-gradient(#c24914, #682c0e); */
+  background-color: black;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.jr-code {
+  color: white;
+  font-size: 18px;
+}
+
+.join-btn {
+  width: 90px;
+  font-size: 20px;
+}
+
+.fa-arrow-right {
+  margin: 5px;
+}
+
+.rc-container .error {
+  margin-top: 10px;
+}

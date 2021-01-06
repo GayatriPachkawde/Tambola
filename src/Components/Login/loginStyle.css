@@ -128,3 +128,49 @@
 .input_field:focus {
   outline: none;
 }
+
+#btn {
+  background: #6886c5;
+  height: 50px;
+  width: 70px;
+  min-width: 150px;
+  border: none;
+  border-radius: 10px;
+  color: black;
+  position: relative;
+  transition: 1s;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding-top: 5px;
+  margin: auto;
+  margin-top: 30%;
+  font-size: 20px;
+  font-family: "Courgette", cursive;
+}
+
+#btn #circle {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  overflow: hidden;
+  transition: 500ms;
+}
+
+#btn:hover {
+  background: transparent;
+}
+
+#btn:hover #circle {
+  height: 50px;
+  width: 150px;
+  left: 0;
+  border-radius: 0;
+  border-bottom: 2px solid black;
+}

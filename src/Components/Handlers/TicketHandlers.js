@@ -1,7 +1,4 @@
-import React from "react";
-import "./gameroom.css";
-
-const generateRandomNumbers = () => {
+exports.generateRandomNumbers = () => {
   //returns "x" unique random numbers from "array".....
   const genarateUniqueRandomNumbers = (array, x) => {
     var n1;
@@ -15,7 +12,7 @@ const generateRandomNumbers = () => {
     }
     return r;
   };
-  //col1 contains element from one two 10....col2 contains element from 11 to 20 ans so on....
+  //col1 contains element from one to 10....col2 contains element from 11 to 20 ans so on....
   let col1 = [],
     col2 = [],
     col3 = [],
@@ -25,7 +22,7 @@ const generateRandomNumbers = () => {
     col7 = [],
     col8 = [],
     col9 = [];
-  let columns = [col1, col2, col3, col4, col5, col6, col7, col8, col9];
+
   for (let i = 1; i <= 10; i++) {
     col1.push(i);
     col2.push(i + 10);
@@ -59,7 +56,7 @@ const generateRandomNumbers = () => {
   colm8 = genarateUniqueRandomNumbers(col8, 3);
   colm9 = genarateUniqueRandomNumbers(col9, 3);
   let reqArr = [colm1, colm2, colm3, colm4, colm5, colm6, colm7, colm8, colm9];
-  console.log(reqArr);
+
   const resultArr = [];
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 9; j++) {
@@ -107,48 +104,4 @@ const generateRandomNumbers = () => {
   return finalResult;
 };
 
-const GameRoom = () => {
-  const [row1, row2, row3] = generateRandomNumbers();
-
-  return (
-    <div className="hp-mainDiv">
-      <div className="ticket-container">
-        {row1.map((number) => {
-          return number === 100 ? (
-            <div className={"ticket-box"}></div>
-          ) : (
-            <div className="ticket-box">
-              <figure className="ticket-ball">
-                <span className="ticket-number">{number}</span>
-              </figure>
-            </div>
-          );
-        })}
-        {row2.map((number) => {
-          return number === 100 ? (
-            <div className={"ticket-box"}></div>
-          ) : (
-            <div className="ticket-box">
-              <figure className="ticket-ball">
-                <span className="ticket-number">{number}</span>
-              </figure>
-            </div>
-          );
-        })}
-        {row3.map((number) => {
-          return number === 100 ? (
-            <div className={"ticket-box"}></div>
-          ) : (
-            <div className="ticket-box">
-              <figure className="ticket-ball">
-                <span className="ticket-number">{number}</span>
-              </figure>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-export default GameRoom;
+//export default generateRandomNumbers;
