@@ -5,13 +5,10 @@ import Balls from "../../Ball/Balls";
 import { withRouter } from "react-router-dom";
 
 const CreateRoom = (props) => {
+  const username = localStorage.getItem("username");
   const [id, setid] = useState();
   const [code, setcode] = useState();
   const [showEnterbutton, setshowEnterbutton] = useState(false);
-
-  useEffect(() => {
-    props.handler();
-  }, []);
 
   const generateCode = () => {
     const roomcode = Math.floor(100000 + Math.random() * 900000);
@@ -20,10 +17,9 @@ const CreateRoom = (props) => {
   };
 
   const createRoom = () => {
-    const username = localStorage.getItem("username");
-
     generateCode();
     setshowEnterbutton(true);
+    console.log(username);
     fetch("http://localhost:8000/gameroom", {
       method: "POST",
       body: JSON.stringify({ name: generateCode(), username }),

@@ -43,8 +43,15 @@ const RoomCode = (props) => {
         <input
           type="text"
           maxLength="1"
+          id="1"
           autoFocus
-          onKeyUpCapture={() => document.getElementById("2").focus()}
+          onKeyUpCapture={(e) => {
+            if (e.keyCode === 8) {
+              document.getElementById("1").focus();
+            } else {
+              document.getElementById("2").focus();
+            }
+          }}
           autocomplete="off"
           className="brown-bg"
           onChange={(e) => setInputInArray(e, 0)}
@@ -55,7 +62,13 @@ const RoomCode = (props) => {
           maxLength="1"
           id="2"
           autocomplete="off"
-          onKeyUpCapture={() => document.getElementById("3").focus()}
+          onKeyUpCapture={(e) => {
+            if (e.keyCode === 8) {
+              document.getElementById("1").focus();
+            } else {
+              document.getElementById("3").focus();
+            }
+          }}
           className="brown-bg"
           onChange={(e) => setInputInArray(e, 1)}
           value={roomcode[1]}
@@ -65,7 +78,13 @@ const RoomCode = (props) => {
           maxLength="1"
           id="3"
           autocomplete="off"
-          onKeyUpCapture={() => document.getElementById("4").focus()}
+          onKeyUpCapture={(e) => {
+            if (e.keyCode === 8) {
+              document.getElementById("2").focus();
+            } else {
+              document.getElementById("4").focus();
+            }
+          }}
           className="brown-bg"
           onChange={(e) => setInputInArray(e, 2)}
           value={roomcode[2]}
@@ -75,7 +94,13 @@ const RoomCode = (props) => {
           maxLength="1"
           id="4"
           autocomplete="off"
-          onKeyUpCapture={() => document.getElementById("5").focus()}
+          onKeyUpCapture={(e) => {
+            if (e.keyCode === 8) {
+              document.getElementById("3").focus();
+            } else {
+              document.getElementById("5").focus();
+            }
+          }}
           className="brown-bg"
           onChange={(e) => setInputInArray(e, 3)}
           value={roomcode[3]}
@@ -85,7 +110,13 @@ const RoomCode = (props) => {
           maxLength="1"
           id="5"
           autocomplete="off"
-          onKeyUpCapture={() => document.getElementById("6").focus()}
+          onKeyUpCapture={(e) => {
+            if (e.keyCode === 8) {
+              document.getElementById("4").focus();
+            } else {
+              document.getElementById("6").focus();
+            }
+          }}
           className="brown-bg"
           onChange={(e) => setInputInArray(e, 4)}
           value={roomcode[4]}
@@ -97,6 +128,11 @@ const RoomCode = (props) => {
           className="brown-bg"
           autocomplete="off"
           onChange={(e) => setInputInArray(e, 5)}
+          onKeyUpCapture={(e) => {
+            if (e.keyCode === 8) {
+              document.getElementById("5").focus();
+            }
+          }}
           value={roomcode[5]}
           onKeyUp={joinRoom}
         />

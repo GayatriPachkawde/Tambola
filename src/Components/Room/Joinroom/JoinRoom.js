@@ -26,10 +26,6 @@ const JoinRoom = (props) => {
       });
   };
 
-  useEffect(() => {
-    props.handler();
-  }, []);
-
   return (
     <div className="jr-mainDiv blue-bg">
       <Balls />

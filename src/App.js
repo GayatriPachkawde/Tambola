@@ -13,15 +13,6 @@ function App() {
   const [loggedIn, setloggedIn] = useState(false);
   const [error, seterror] = useState(undefined);
   const [socket, setsocket] = useState(null);
-  const [isadmin, setisAdmin] = useState(false);
-
-  const setAdmin = () => {
-    setisAdmin(true);
-  };
-
-  const setAdminfalse = () => {
-    setisAdmin(false);
-  };
 
   const setupSocket = () => {
     const token = localStorage.getItem("CC_TOKEN");
@@ -120,20 +111,22 @@ function App() {
           </Route>
 
           <Route exact path="/create-room">
-            <CreateRoom socket={socket} handler={setAdmin} />
+            <CreateRoom socket={socket} />
           </Route>
 
           <Route exact path="/join-room">
-            <JoinRoom socket={socket} handler={setAdminfalse} />
+            <JoinRoom socket={socket} />
           </Route>
 
           <Route exact path="/instruction">
-            <Instruction socket={socket} />
+            <Instruction name="gayu" socket={socket}>
+              Heyy There
+            </Instruction>
           </Route>
 
           <Route
             path="/game-room/:id"
-            render={() => <GameRoom socket={socket} isadmin={isadmin} />}
+            render={() => <GameRoom socket={socket} />}
             exact
           />
         </Router>

@@ -44,7 +44,7 @@ const Login = (props) => {
                 props.signupHandler(userName, password);
               }}
             >
-              Sign Up<div id="circle"></div>
+              Register<div id="circle"></div>
             </div>
           ) : (
             <div

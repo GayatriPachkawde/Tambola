@@ -3,9 +3,9 @@ import React from "react";
 const Signup = (props) => {
   return (
     <div className="box">
-      <h1>Don't have an account?</h1>
+      <h1 className="register-heading">Don't have an account?</h1>
       <div className="signup-btn" onClick={props.signup}>
-        Sign Up
+        Register
       </div>
     </div>
   );

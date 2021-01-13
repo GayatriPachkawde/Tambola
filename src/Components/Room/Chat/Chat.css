@@ -1,0 +1,100 @@
+.chat-box {
+  height: 500px;
+  width: 300px;
+  position: absolute;
+  right: 0px;
+  top: 35px;
+  float: right;
+  background-color: #153e90;
+  /* opacity: 70%; */
+}
+
+.send-message {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0px;
+}
+
+.send {
+  width: 30px;
+  cursor: pointer;
+  padding: 3px;
+  border: 1px solid black;
+}
+
+.send:active {
+  transform: translateY(2px);
+}
+
+.fa-arrow-up {
+  size: 30px;
+  font-size: 20px;
+  margin: 6px;
+}
+
+.input-message {
+  background-color: #0f3175;
+  border: none;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  width: 250px;
+  height: 30px;
+  padding: 5px;
+  color: white;
+  font-family: "Patrick Hand", cursive;
+  font-size: 20px;
+}
+
+.message {
+  padding: 8px;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 16px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 20px;
+}
+
+.messages-container {
+  height: 476px;
+  overflow: auto;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 12px;
+  background-color: #21209c;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: #21209c;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-image: radial-gradient(white, #98acf8);
+  border: 1px solid #21209c;
+  z-index: 1;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  word-wrap: break-word;
+
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.myMessage {
+  background-color: #949cdf;
+}
+
+.notmyMessage {
+  background-color: #e7d9ea;
+}
+
+.sender-name {
+  font-weight: bolder;
+}

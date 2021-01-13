@@ -9,7 +9,6 @@
   left: 7%;
   z-index: 3;
   background-image: radial-gradient(white, #e1f2fb);
-  /* box-shadow: 20px 20px 50px 10px #21209c inset; */
 }
 
 .signup {
@@ -18,13 +17,13 @@
   height: 76%;
   position: absolute;
   z-index: 2;
-  /* background-color: #ebd4d4;  #9ab3f5;*/
   background-color: #d6e5fa;
 }
 
 .fp-div {
-  width: 800px;
-  height: 440px;
+  width: 61%;
+  height: 78%;
+
   margin: auto;
   position: relative;
   z-index: 1;
@@ -39,14 +38,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* background-color: #fde9df; */
   background-color: #9ab3f5;
 }
 
 .box {
-  position: absolute;
-  right: 10px;
-  bottom: 150px;
+  float: right;
+  margin-top: 90px;
+  margin-right: 10px;
 }
 
 .heading {
@@ -106,13 +104,13 @@
 
 .fp-title {
   font-family: "Courgette", cursive;
-  font-size: 50px;
+  font-size: 3.2rem;
+  /* font-size: 50px; */
   text-shadow: 2px 1px grey;
   margin-top: 10px;
   margin-bottom: 60px;
   color: black;
   letter-spacing: normal;
-
   position: static;
   text-align: center;
 }
@@ -173,4 +171,32 @@
   left: 0;
   border-radius: 0;
   border-bottom: 2px solid black;
+}
+
+@media screen and (max-width: 1180px) and (min-width: 1000px) {
+  .register-heading {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .login {
+    width: 50%;
+    height: 85%;
+  }
+
+  .register-heading {
+    font-size: 15px;
+  }
+
+  .signup-btn {
+    font-size: 15px;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .signup {
+    height: 60%;
+  }
 }

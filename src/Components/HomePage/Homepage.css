@@ -13,7 +13,7 @@
   text-align: center;
   font-family: "Nerko One", cursive;
   color: white;
-  font-size: 50px;
+  font-size: 3.1rem;
   letter-spacing: 3px;
   text-shadow: 5px 5px black;
 }
@@ -22,15 +22,17 @@
   flex-direction: row;
   justify-content: center;
 }
+
 button {
   background-image: radial-gradient(#c24914, #682c0e);
   color: white;
   margin: 7px;
   cursor: pointer;
   border-radius: 16px;
-  width: 150px;
+
   height: 40px;
   width: 200px;
+
   font-size: 26px;
   font-family: "Redressed", cursive;
 }
@@ -103,4 +105,81 @@ button:hover {
   margin-bottom: 10px;
   border: 1px solid white;
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    margin-top: 150px;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    text-shadow: 3px 3px black;
+  }
+
+  button {
+    height: 35px;
+    width: 130px;
+    font-size: 18px;
+  }
+
+  .info-icon {
+    background-color: white;
+    border-radius: 50%;
+    font-size: 30px;
+  }
+
+  .signout-icon {
+    font-size: 20px;
+    padding: 4px;
+    border: 1px solid white;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+
+  .user-icon {
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 600px) {
+  .title {
+    margin-top: 150px;
+
+    font-size: 2.5rem;
+    letter-spacing: 2.1px;
+    text-shadow: 3px 4px black;
+  }
+
+  button {
+    height: 40px;
+    width: 170px;
+    font-size: 22px;
+  }
+
+  .info-icon {
+    background-color: white;
+    border-radius: 50%;
+    font-size: 40px;
+  }
+
+  .signout-icon {
+    font-size: 30px;
+    padding: 4px;
+    border: 1px solid white;
+    cursor: pointer;
+    margin-top: 5px;
+  }
+
+  .user-icon {
+    font-size: 30px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
 }

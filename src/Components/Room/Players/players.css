@@ -1,0 +1,13 @@
+.players {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  height: fit-content;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+}

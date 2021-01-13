@@ -36,7 +36,7 @@
 .ball2 {
   height: 70px;
   width: 70px;
-  background-color: #be8abf;
+  background-color: red;
   bottom: 120px;
   left: 300px;
 }
@@ -44,13 +44,14 @@
   height: 130px;
   width: 130px;
   background-color: #edf285;
+
   bottom: 10px;
   left: 190px;
 }
 .ball4 {
   height: 100px;
   width: 100px;
-  background-color: #01c5c4;
+  background-color: violet;
   bottom: -5px;
   left: 315px;
 }
@@ -79,14 +80,15 @@
 .ball8 {
   height: 50px;
   width: 50px;
-  background-color: #e05297;
+  background-color: orangered;
   bottom: 120px;
   right: 320px;
 }
 .ball9 {
   height: 100px;
   width: 100px;
-  background-color: orangered;
+  background-color: orange;
+
   bottom: 0px;
   right: 330px;
 }
@@ -144,4 +146,376 @@
   top: 10%;
   left: 10%;
   font-size: 20px;
+}
+
+@media screen and (max-width: 550px) {
+  .ball1 {
+    height: 80px;
+    width: 80px;
+    left: 20px;
+    bottom: -5px;
+  }
+
+  .ball2 {
+    height: 60px;
+    width: 60px;
+
+    bottom: 30px;
+    left: -10px;
+    z-index: -1;
+  }
+  .ball3 {
+    height: 90px;
+    width: 90px;
+    bottom: 10px;
+    left: 80px;
+  }
+  .ball4 {
+    height: 60px;
+    width: 60px;
+
+    bottom: 80px;
+    left: 28px;
+  }
+  .ball5 {
+    height: 45px;
+    width: 45px;
+
+    bottom: 95px;
+    left: 90px;
+    z-index: -2;
+  }
+  .ball6 {
+    height: 60px;
+    width: 60px;
+    right: 50px;
+
+    bottom: 7px;
+
+    /* green */
+  }
+
+  .ball7 {
+    height: 60px;
+    width: 60px;
+    bottom: 30px;
+    right: 0px;
+
+    /* dk */
+  }
+  .ball8 {
+    height: 50px;
+    width: 50px;
+    right: 40px;
+    /* red */
+    bottom: 80px;
+  }
+  .ball9 {
+    height: 50px;
+    width: 50px;
+    right: 90px;
+    bottom: 90px;
+  }
+  .ball0 {
+    height: 80px;
+    width: 80px;
+    bottom: 20px;
+    right: 100px;
+  }
+
+  .number {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 80%;
+    text-align: center;
+    background-color: #fbf4f9;
+    font-family: "Playfair Display", serif;
+  }
+
+  .number12,
+  .number27 {
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+  }
+  .number45,
+  .number1 {
+    font-size: 20px;
+    top: 4px;
+    right: 15px;
+  }
+  .number32,
+  .number47 {
+    bottom: 20px;
+    right: 20px;
+    font-size: 30px;
+  }
+  .number8,
+  .number31 {
+    bottom: 10px;
+    right: 10px;
+    font-size: 20px;
+  }
+  .number34 {
+    top: 10%;
+    left: 10%;
+    font-size: 15px;
+  }
+  .number47 {
+    font-size: 15px;
+  }
+  .number54 {
+    top: 10%;
+    left: 10%;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 750px) and (min-width: 550px) {
+  .ball1 {
+    height: 92px;
+    width: 92px;
+    background-color: #3b4ba3;
+    bottom: 20px;
+    left: 30px;
+  }
+
+  .ball2 {
+    height: 60px;
+    width: 60px;
+    background-color: red;
+    bottom: 80px;
+    left: 110px;
+  }
+  .ball3 {
+    height: 90px;
+    width: 90px;
+    background-color: #edf285;
+    bottom: 10px;
+    left: 160px;
+  }
+  .ball4 {
+    height: 75px;
+    width: 75px;
+    background-color: violet;
+    bottom: -10px;
+    left: 100px;
+  }
+  .ball5 {
+    height: 40px;
+    width: 40px;
+    background-color: #fa26a0;
+    bottom: 95px;
+    left: 160px;
+  }
+  .ball6 {
+    height: 60px;
+    width: 60px;
+    background-color: #54e346;
+    bottom: 90px;
+    right: 100px;
+  }
+
+  .ball7 {
+    height: 100px;
+    width: 100px;
+    background-color: #01c5c4;
+    bottom: 20px;
+    right: 150px;
+  }
+  .ball8 {
+    height: 75px;
+    width: 75px;
+    background-color: orangered;
+    bottom: 40px;
+    right: 13px;
+  }
+  .ball9 {
+    height: 40px;
+    width: 40px;
+    background-color: orange;
+
+    bottom: 110px;
+    right: 60px;
+  }
+  .ball0 {
+    height: 90px;
+    width: 90px;
+    background-color: #892cdc;
+    bottom: -5px;
+    right: 80px;
+  }
+
+  .number {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 80%;
+    text-align: center;
+    background-color: #fbf4f9;
+    font-family: "Playfair Display", serif;
+  }
+
+  .number12,
+  .number27 {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+  }
+  .number45,
+  .number1 {
+    font-size: 15px;
+    top: 4px;
+    right: 15px;
+  }
+  .number32,
+  .number47 {
+    bottom: 20px;
+    right: 20px;
+    font-size: 25px;
+  }
+  .number8,
+  .number31 {
+    bottom: 10px;
+    right: 10px;
+    font-size: 25px;
+  }
+  .number34 {
+    top: 10%;
+    left: 10%;
+    font-size: 12px;
+  }
+  .number47 {
+    font-size: 20px;
+  }
+  .number54 {
+    top: 10%;
+    left: 10%;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 750px) {
+  .ball1 {
+    height: 110px;
+    width: 110px;
+    background-color: #3b4ba3;
+    bottom: 20px;
+    left: 50px;
+  }
+
+  .ball2 {
+    height: 75px;
+    width: 75px;
+    background-color: red;
+    bottom: 80px;
+    left: 130px;
+  }
+  .ball3 {
+    height: 105px;
+    width: 105px;
+    background-color: #edf285;
+    bottom: 10px;
+    left: 180px;
+  }
+  .ball4 {
+    height: 90px;
+    width: 90px;
+    background-color: violet;
+    bottom: -10px;
+    left: 120px;
+  }
+  .ball5 {
+    height: 60px;
+    width: 60px;
+    background-color: #fa26a0;
+    bottom: 95px;
+    left: 180px;
+  }
+  .ball6 {
+    height: 78px;
+    width: 78px;
+    background-color: #54e346;
+    bottom: 90px;
+    right: 120px;
+  }
+
+  .ball7 {
+    height: 114px;
+    width: 114px;
+    background-color: #01c5c4;
+    bottom: 20px;
+    right: 170px;
+  }
+  .ball8 {
+    height: 90px;
+    width: 90px;
+    background-color: orangered;
+    bottom: 40px;
+    right: 33px;
+  }
+  .ball9 {
+    height: 60px;
+    width: 60px;
+    background-color: orange;
+
+    bottom: 110px;
+    right: 80px;
+  }
+  .ball0 {
+    height: 98px;
+    width: 98px;
+    background-color: #892cdc;
+    bottom: -5px;
+    right: 100px;
+  }
+
+  .number {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border-radius: 80%;
+    text-align: center;
+    background-color: #fbf4f9;
+    font-family: "Playfair Display", serif;
+  }
+
+  .number12,
+  .number27 {
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+  }
+  .number45,
+  .number1 {
+    font-size: 15px;
+    top: 4px;
+    right: 15px;
+  }
+  .number32,
+  .number47 {
+    bottom: 20px;
+    right: 20px;
+    font-size: 25px;
+  }
+  .number8,
+  .number31 {
+    bottom: 10px;
+    right: 10px;
+    font-size: 25px;
+  }
+  .number34 {
+    top: 10%;
+    left: 10%;
+    font-size: 12px;
+  }
+  .number47 {
+    font-size: 20px;
+  }
+  .number54 {
+    top: 10%;
+    left: 10%;
+    font-size: 18px;
+  }
 }
