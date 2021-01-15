@@ -40,7 +40,7 @@ const CreateRoom = (props) => {
   return (
     <div className="cr-mainDiv blue-bg">
       <Balls />
-      <div className="jr-title">CREATE ROOM</div>
+      <div className="jr-title">Create Room</div>
       <div className="cr-container">
         {showEnterbutton ? <div className="code">{code}</div> : null}
         {showEnterbutton ? (

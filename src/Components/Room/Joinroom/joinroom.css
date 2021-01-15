@@ -29,7 +29,8 @@
 }
 
 .jr-title {
-  font-family: "Nerko One", cursive;
+  /* font-family: "Nerko One", cursive; */
+  font-family: "Redressed", cursive;
   color: white;
   font-size: 85px;
   text-shadow: 3px 3px black;
@@ -122,4 +123,11 @@ a {
 
 .rc-container .error {
   margin-top: 10px;
+}
+
+@media screen and (max-width: 500) {
+  .code-container input {
+    height: 20px;
+    width: 20px;
+  }
 }

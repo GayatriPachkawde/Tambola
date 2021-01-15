@@ -14,11 +14,12 @@ const Players = ({ socket }) => {
 
   return (
     <div className="players">
+      <div className="players-title">Players</div>
       {players.map((player) => {
         return (
-          <div className="user">
+          <div className="player">
             <i className="fas fa-user fa-2x"></i>
-            <p>{player}</p>
+            <div>{player}</div>
           </div>
         );
       })}

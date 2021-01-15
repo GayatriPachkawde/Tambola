@@ -4,15 +4,17 @@ import { withRouter } from "react-router-dom";
 import Chat from "../Chat/Chat";
 import cross from "../../icons/cross.ico";
 import Players from "../Players/Players";
+import Congratulations from "../Congratulations/Congratulations";
 
-const GameRoom = ({ match, location, socket }) => {
+const GameRoom = ({ match, socket }) => {
   const [userId, setUserId] = useState("");
   const [admin, setAdmin] = useState(false);
-  const [showTikcet, setshowTicket] = useState(false);
   const gameroomid = match.params.id;
   const [clicked, setClicked] = useState([]);
-  const [time, setTime] = useState();
+  const [number, setNumber] = useState();
   const [disabled, setDisabled] = useState([]);
+  const [gameStarted, setgameStarted] = useState(false);
+  const [gameWon, setgameWon] = useState(false);
   const [row1boxClicked, setrow1boxClicked] = useState([
     "notClicked",
     "notClicked",
@@ -56,10 +58,13 @@ const GameRoom = ({ match, location, socket }) => {
   };
 
   useEffect(() => {
-    socket.on("timerStarted", (data) => {
-      setTime(data.time);
-    });
-  }, [time]);
+    if (socket) {
+      socket.on("timerStarted", (data) => {
+        setgameStarted(true);
+        setNumber(data.time);
+      });
+    }
+  }, [number]);
 
   useEffect(() => {
     window.addEventListener("beforeunload", alertUser);
@@ -77,7 +82,6 @@ const GameRoom = ({ match, location, socket }) => {
   const [row3, setrow3] = useState([]);
 
   const getTicket = () => {
-    setshowTicket(true);
     fetch("http://localhost:8000/gameroom/ticket", {
       method: "POST",
       body: JSON.stringify({ id: gameroomid }),
@@ -96,12 +100,16 @@ const GameRoom = ({ match, location, socket }) => {
   };
 
   useEffect(() => {
+    getTicket();
+  }, []);
+
+  useEffect(() => {
     if (socket) {
       socket.on("admin", (data) => {
         setAdmin(data.isadmin);
       });
     }
-  });
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("CC_TOKEN");
@@ -119,7 +127,6 @@ const GameRoom = ({ match, location, socket }) => {
       if (socket) {
         socket.emit("leaveroom", {
           gameroomid,
-          admin,
         });
       }
     };
@@ -140,92 +147,123 @@ const GameRoom = ({ match, location, socket }) => {
       if (verify) {
         alert("not won");
       } else {
-        alert("won");
+        setgameWon(true);
+        alert("You Won");
       }
     }
   };
 
-  const ticketClicked = (e) => {
-    const number = e.target.innerText;
+  const ticketClicked = (e, idx, row) => {
+    const clickedNumber = Number(e.target.innerText);
 
-    if (number && !disabled.includes(number)) {
-      if (Number(number) === Number(time)) {
-        const tempArr = [...clicked];
-        if (!tempArr.includes(number)) {
-          tempArr.push(number);
-          setClicked(tempArr);
-        }
-      }
-      e.target.classList.add("cross");
+    if (!gameStarted || disabled.includes(clickedNumber)) {
+      return;
+    }
+
+    if (clickedNumber === number) {
+      const tempArr = [...clicked];
+      tempArr.push(clickedNumber);
+      setClicked(tempArr);
+    } else {
+      const tempArr = [...disabled];
+      tempArr.push(clickedNumber);
+      setDisabled(tempArr);
+    }
+    if (row === "row1") {
+      const tempArr = [...row1boxClicked];
+      tempArr[idx] = "cross";
+      setrow1boxClicked(tempArr);
+    }
+    if (row === "row2") {
+      const tempArr = [...row2boxClicked];
+      tempArr[idx] = "cross";
+      setrow2boxClicked(tempArr);
+    }
+    if (row === "row3") {
+      const tempArr = [...row3boxClicked];
+      tempArr[idx] = "cross";
+      setrow3boxClicked(tempArr);
     }
   };
 
   return (
-    <div className="hp-mainDiv">
+    <div className="gr-mainDiv blue-bg">
       <div className="countdown-timer">
-        {admin ? <button onClick={startTimer}>Start Game</button> : null}
-        {time ? <div>{time}</div> : null}
+        {admin ? (
+          gameStarted ? null : (
+            <div className="claim-button">
+              <button onClick={startTimer}>Start Game</button>
+            </div>
+          )
+        ) : (
+          <div className="title">Wait for Admin to start the game</div>
+        )}
+
+        {number ? (
+          <div className="calledNumber ball brown-bg">{number}</div>
+        ) : null}
       </div>
       {/* <Chat socket={socket} userId={userId} gameroomid={gameroomid} /> */}
       <Players socket={socket} />
-      {showTikcet ? (
-        <div
-          className="ticket-container"
-          onClick={(e) => {
-            ticketClicked(e);
-          }}
-        >
-          <div className="row">
-            {row1.map((number, idx) => {
-              return number === 100 ? (
-                <>
-                  <div className={"ticket-box"}></div>
-                </>
-              ) : (
-                <div className={"ticket-box"}>
-                  <figure className="ticket-ball code">{number}</figure>
-                </div>
-              );
-            })}
-          </div>
-          <div className="row">
-            {" "}
-            {row2.map((number) => {
-              return number === 100 ? (
-                <>
-                  <div className={"ticket-box"}></div>
-                </>
-              ) : (
-                <div className={"ticket-box"}>
-                  <figure className="ticket-ball code">{number}</figure>
-                </div>
-              );
-            })}
-          </div>
-          <div className="row">
-            {" "}
-            {row3.map((number) => {
-              return number === 100 ? (
-                <>
-                  <div className={"ticket-box"}></div>
-                </>
-              ) : (
-                <div className={"ticket-box"}>
-                  <figure className="ticket-ball code">{number}</figure>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ) : (
-        <button className="ticket-btn" onClick={getTicket}>
-          Ticket
-        </button>
-      )}
 
-      <div className="claim-buttons">
+      <div className="ticket-container">
+        <div className="row">
+          {row1.map((number, idx) => {
+            return number === 100 ? (
+              <>
+                <div className={`ticket-box ${row1boxClicked[idx]}`}></div>
+              </>
+            ) : (
+              <div
+                onClick={(event) => ticketClicked(event, idx, "row1")}
+                className={`ticket-box ${row1boxClicked[idx]}`}
+              >
+                <figure className="ticket-ball code">{number}</figure>
+              </div>
+            );
+          })}
+        </div>
+        <div className="row">
+          {" "}
+          {row2.map((number, idx) => {
+            return number === 100 ? (
+              <>
+                <div className={`ticket-box ${row2boxClicked[idx]}`}></div>
+              </>
+            ) : (
+              <div
+                onClick={(event) => ticketClicked(event, idx, "row2")}
+                className={`ticket-box ${row2boxClicked[idx]}`}
+              >
+                <figure className="ticket-ball code">{number}</figure>
+              </div>
+            );
+          })}
+        </div>
+        <div className="row">
+          {" "}
+          {row3.map((number, idx) => {
+            return number === 100 ? (
+              <>
+                <div className={`ticket-box ${row3boxClicked[idx]}`}></div>
+              </>
+            ) : (
+              <div
+                onClick={(event) => ticketClicked(event, idx, "row3")}
+                className={`ticket-box ${row3boxClicked[idx]}`}
+              >
+                <figure className="ticket-ball code">{number}</figure>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {gameWon ? <Congratulations /> : null}
+      {/* <Congratulations /> */}
+
+      <div className="claim-button">
         <button onClick={() => verifyTicket()}>Claim Full House</button>
-        {/* <button>Claim first five</button> */}
       </div>
     </div>
   );

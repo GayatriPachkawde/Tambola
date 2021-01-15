@@ -55,7 +55,6 @@ const Chat = ({ socket, userId, gameroomid }) => {
       </div>
 
       <div className="send-message">
-        {" "}
         <input
           className="input-message"
           type="text"
@@ -63,6 +62,9 @@ const Chat = ({ socket, userId, gameroomid }) => {
           onChange={(event) => setmessage(event.target.value)}
           value={newmessage}
           autoFocus
+          onKeyDown={(e) => {
+            if (e.keyCode === 13) sendMessage();
+          }}
         ></input>
         <div className="send" onClick={sendMessage}>
           <i class="fa fa-arrow-up" aria-hidden="true"></i>

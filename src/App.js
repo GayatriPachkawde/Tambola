@@ -80,9 +80,6 @@ function App() {
       .then((r) => r.json())
       .then((r) => {
         if (r.message === "User registered successfully") {
-          // localStorage.setItem("username", name);
-          // localStorage.setItem("CC_TOKEN", r.token);
-          // setloggedIn(true);
           return;
         } else {
           seterror(r.message);

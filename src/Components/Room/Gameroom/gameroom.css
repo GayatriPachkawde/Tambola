@@ -1,6 +1,6 @@
 .ticket-container {
   margin: auto;
-  /* margin-top: 10%; */
+  margin-top: 70px;
   margin-left: 20%;
   width: fit-content;
   z-index: -2;
@@ -54,7 +54,6 @@
   );
   box-shadow: inset -25px -25px 40px rgba(0, 0, 0, 0.5);
   position: relative;
-
   z-index: -1;
 }
 
@@ -75,9 +74,9 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.cross-black {
-  background-color: red;
-  z-index: -3;
+
+.wrong {
+  background-color: grey;
 }
 
 .ticket-btn {
@@ -88,7 +87,25 @@
   font-size: 20px;
 }
 
-.claim-buttons {
+.claim-button {
   text-align: center;
   margin-top: 20px;
+}
+
+.calledNumber {
+  font-size: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  line-height: 70px;
+  font-family: "Press Start 2P", cursive;
+  position: static;
+  margin: auto;
+  margin-top: 15px;
+}
+
+.gr-mainDiv .title {
+  font-family: "Redressed", cursive;
 }

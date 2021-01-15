@@ -3,11 +3,23 @@
   flex-direction: column;
   width: 100px;
   height: fit-content;
-  border: 1px solid black;
+  max-height: 500px;
+  overflow: auto;
   text-align: center;
+  background-color: #153e90;
+  position: absolute;
+}
+
+.players-title {
+  margin: 15px;
+  color: white;
+  font-family: "Redressed", cursive;
+  font-size: 25px;
 }
 
 .player {
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
+  font-weight: bolder;
 }
